@@ -1,0 +1,94 @@
+@import '../../../../styles/colors';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 35rem;
+  background-color: #000;
+  position: relative;
+
+  .slide {
+    position: absolute;
+    display: flex;
+    height: 35rem;
+    width: 100%;
+
+    &-bg {
+      position: relative;
+      display: flex;
+      flex: 1 1 auto;
+
+      &:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        content: '';
+
+        background-image: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 20%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+
+      &-image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-pane {
+      position: absolute;
+      width: 45%;
+      top: 5rem;
+      left: 5rem;
+
+      .name {
+        font-size: 2.8rem;
+      }
+
+      .meta {
+        font-size: 1.2rem;
+        color: $lightGray;
+
+        .info {
+          display: flex;
+
+          > span {
+            &:not(:last-child):after {
+              content: '|';
+              margin-right: 9px;
+              margin-left: 9px;
+            }
+          }
+
+          .rating {
+            display: flex;
+            align-items: center;
+
+            .app-icon {
+              color: #d4af37;
+              margin-right: 5px;
+              font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+            }
+
+            &-value {
+              color: $white;
+            }
+          }
+        }
+      }
+
+      .desc {
+        font-size: 0.8rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
