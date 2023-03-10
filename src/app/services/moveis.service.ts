@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Movie, MovieCredits, MovieDTO, MovieImages, MovieVideoDTO } from '../models/movie';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { TvDTO } from '../models/tv';
 import { GenresDTO } from '../models/genre';
 
 @Injectable({
@@ -67,11 +66,5 @@ export class MoveisService {
     return this.http
       .get<GenresDTO>(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}`)
       .pipe(switchMap((res) => of(res.genres.slice(0, 12))));
-  }
-
-  getTvs(type: string = 'latest', count: number = 12) {
-    return this.http
-      .get<TvDTO>(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`)
-      .pipe(switchMap((res) => of(res.results.slice(0, count))));
   }
 }
